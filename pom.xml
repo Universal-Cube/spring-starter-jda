@@ -15,6 +15,11 @@
 		<url>https://github.com/Universal-Cube/spring-starter-jda/issues</url>
 	</issueManagement>
 
+	<ciManagement>
+		<system>Github</system>
+		<url>https://github.com/Universal-Cube/spring-starter-jda/actions</url>
+	</ciManagement>
+
 	<licenses>
 		<license>
 			<name>MIT License</name>
