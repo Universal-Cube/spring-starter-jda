@@ -1,4 +1,4 @@
-package org.universalcube.spring_starter_discord.commands.data.stored;
+package org.universalcube.spring_starter_discord.discord.commands.data.stored;
 
 import org.springframework.lang.NonNull;
 

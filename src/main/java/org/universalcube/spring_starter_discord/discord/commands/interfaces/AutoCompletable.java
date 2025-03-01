@@ -1,4 +1,4 @@
-package org.universalcube.spring_starter_discord.commands.interfaces;
+package org.universalcube.spring_starter_discord.discord.commands.interfaces;
 
 import net.dv8tion.jda.api.events.interaction.command.CommandAutoCompleteInteractionEvent;
 import org.springframework.lang.NonNull;

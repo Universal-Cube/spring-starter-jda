@@ -1,4 +1,4 @@
-package org.universalcube.spring_starter_discord.commands;
+package org.universalcube.spring_starter_discord.discord.commands;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
@@ -7,9 +7,9 @@ import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEve
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.EventListener;
-import org.universalcube.spring_starter_discord.commands.annotations.SlashCommandComponent;
-import org.universalcube.spring_starter_discord.commands.interfaces.BotCommand;
-import org.universalcube.spring_starter_discord.commands.interfaces.BotCommandExecutor;
+import org.universalcube.spring_starter_discord.discord.commands.annotations.SlashCommandComponent;
+import org.universalcube.spring_starter_discord.discord.commands.interfaces.BotCommand;
+import org.universalcube.spring_starter_discord.discord.commands.interfaces.BotCommandExecutor;
 
 import java.util.Map;
 import java.util.Objects;

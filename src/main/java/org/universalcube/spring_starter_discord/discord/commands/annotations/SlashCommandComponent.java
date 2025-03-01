@@ -1,4 +1,4 @@
-package org.universalcube.spring_starter_discord.commands.annotations;
+package org.universalcube.spring_starter_discord.discord.commands.annotations;
 
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
