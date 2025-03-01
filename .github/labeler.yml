@@ -1,0 +1,19 @@
+ci-cd:
+  - ".github/**"
+  - ".gitignore"
+
+config:
+  - "pom.xml"
+
+code:
+  - "src/main/**"
+
+test:
+  - "src/test/**"
+
+docs:
+  - "docs/**"
+  - "README.md"
+
+build:
+  - "target/**"
