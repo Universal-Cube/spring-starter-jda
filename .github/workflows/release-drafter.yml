@@ -1,0 +1,20 @@
+name: Release Draft
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-draft:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create release draft
+        uses: release-drafter/release-drafter@v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

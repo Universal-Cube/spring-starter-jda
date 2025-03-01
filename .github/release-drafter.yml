@@ -1,0 +1,29 @@
+name-template: 'v$NEXT_PATCH_VERSION'
+tag-template: 'v$NEXT_PATCH_VERSION'
+categories:
+  - title: '🚀 New Features'
+    labels:
+      - 'feature'
+  - title: '🐞 Bugs Fixes'
+    labels:
+      - 'fix'
+  - title: '📚 Documentation'
+    labels:
+      - 'documentation'
+  - title: '🛠 Configuration'
+    labels:
+      - 'config'
+  - title: '🧪 Tests'
+    labels:
+      - 'test'
+  - title: 'CI/CD'
+    labels:
+      - 'ci-cd'
+  - title: 'Code'
+    labels:
+      - 'code'
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+template: |
+  ## Changes
+  
+  $CHANGES
