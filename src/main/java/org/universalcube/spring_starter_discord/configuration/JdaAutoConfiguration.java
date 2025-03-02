@@ -8,7 +8,6 @@ import net.dv8tion.jda.api.utils.Compression;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.universalcube.spring_starter_discord.properties.JdaConfigurationProperties;
@@ -18,7 +17,6 @@ import java.util.Objects;
 @Getter
 @AutoConfiguration
 @EnableConfigurationProperties(JdaConfigurationProperties.class)
-@ConditionalOnProperty(prefix = "spring.jda", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class JdaAutoConfiguration {
 	private final JdaConfigurationProperties properties;
 
@@ -27,8 +25,8 @@ public class JdaAutoConfiguration {
 	}
 
 	@Bean
-	@ConditionalOnMissingBean(JDA.class)
-	public JDA jda() {
+	@ConditionalOnMissingBean
+	public JDA jda() throws InterruptedException {
 		JDABuilder builder = JDABuilder.createDefault(properties.getToken());
 
 		if (Objects.nonNull(properties.getSettings())) {
@@ -47,6 +45,7 @@ public class JdaAutoConfiguration {
 			}
 		}
 
-		return builder.build();
+		return builder.build()
+				.awaitReady();
 	}
 }
