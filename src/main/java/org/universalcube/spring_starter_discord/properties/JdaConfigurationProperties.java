@@ -1,11 +1,13 @@
 package org.universalcube.spring_starter_discord.properties;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
-@Data
-@ConfigurationProperties(prefix = "spring.jda")
+@Getter
+@Setter
+@ConfigurationProperties("spring.jda")
 public class JdaConfigurationProperties {
 	private String token;
 	@NestedConfigurationProperty
