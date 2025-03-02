@@ -1,3 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   org.universalcube.spring_starter_discord.configuration.JdaAutoConfiguration \
-  org.universalcube.spring_starter_discord.configuration.JdaEventPublisherAutoConfiguration
+  org.universalcube.spring_starter_discord.configuration.JdaEventPublisherAutoConfiguration \
+  org.universalcube.spring_starter_discord.configuration.JdaModulesAutoConfiguration \
+  org.universalcube.spring_starter_discord.configuration.JdaSlashCommandAutoConfiguration \
+  org.universalcube.spring_starter_discord.configuration.ButtonRegistryAutoConfiguration
