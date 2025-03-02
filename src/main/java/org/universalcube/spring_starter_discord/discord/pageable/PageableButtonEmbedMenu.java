@@ -1,13 +1,19 @@
 package org.universalcube.spring_starter_discord.discord.pageable;
 
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.interactions.InteractionHook;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
+import net.dv8tion.jda.api.requests.restaction.WebhookMessageEditAction;
+import net.dv8tion.jda.api.requests.restaction.interactions.ReplyCallbackAction;
 import org.springframework.stereotype.Component;
 import org.universalcube.spring_starter_discord.discord.listener.ButtonRegistry;
+import org.universalcube.spring_starter_discord.utils.BotConstants;
 
+import java.security.SecureRandom;
+import java.util.Objects;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -16,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 public abstract class PageableButtonEmbedMenu extends PageableMenu {
 	private final ScheduledExecutorService scheduler;
 	private final ButtonRegistry buttonRegistry;
+	private final SecureRandom random = new SecureRandom();
 	private ScheduledFuture<?> scheduledFuture;
 	private Button forwardButton;
 	private Button backwardButton;
@@ -26,12 +33,42 @@ public abstract class PageableButtonEmbedMenu extends PageableMenu {
 		this.buttonRegistry = buttonRegistry;
 	}
 
-	public void editInitialInteraction(InteractionHook hook) {
+	private void initializeButtons() {
+		this.backwardButton = Button.primary(random.nextLong() + "-previous", BotConstants.BACK_ARROW_EMOJI).asDisabled();
+		this.forwardButton = Button.primary(random.nextLong() + "-forward", BotConstants.FORWARD_ARROW_EMOJI);
+		this.buttonRegistry.registerButton(this.backwardButton, this::previousPage)
+				.registerButton(this.forwardButton, this::nextPage);
+	}
 
+	public void editInitialInteraction(InteractionHook hook) {
+		MessageEmbed embed = this.createPage(super.currentPage.get());
+		initializeButtons();
+		WebhookMessageEditAction<Message> webhookMessageEditAction = hook.editOriginalEmbeds(embed);
+
+		if (Objects.nonNull(this.forwardButton))
+			webhookMessageEditAction.setActionRow(this.backwardButton, this.forwardButton);
+
+		if (super.maxPage > 1)
+			this.scheduleDeletion();
+
+		webhookMessageEditAction.queue();
+		this.hook = hook;
 	}
 
 	public void sendInitialMessage(GenericCommandInteractionEvent event, boolean ephemeral) {
+		MessageEmbed embed = this.createPage(super.currentPage.get());
+		initializeButtons();
+		ReplyCallbackAction replyCallbackAction = event.replyEmbeds(embed)
+				.setEphemeral(ephemeral);
 
+		if (Objects.nonNull(this.forwardButton))
+			replyCallbackAction.addActionRow(this.backwardButton, this.forwardButton);
+
+		if (super.maxPage > 1)
+			this.scheduleDeletion();
+
+		replyCallbackAction.queue();
+		this.hook = event.getHook();
 	}
 
 	public abstract MessageEmbed createPage(int page);
