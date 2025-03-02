@@ -46,9 +46,10 @@
 
 	<properties>
 		<java.version>21</java.version>
-		<maven-source.version>3.3.1</maven-source.version>
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.target.source>21</maven.target.source>
+		<maven-compiler.plugin>3.14.0</maven-compiler.plugin>
+		<maven-source.version>3.3.1</maven-source.version>
 		<maven-gpg.version>3.2.7</maven-gpg.version>
 		<nexus-staging.version>1.7.0</nexus-staging.version>
 		<maven-javadoc.version>3.11.2</maven-javadoc.version>
@@ -112,6 +113,16 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler.plugin}</version>
+				<configuration>
+					<source>21</source>
+					<target>21</target>
 				</configuration>
 			</plugin>
 
