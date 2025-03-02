@@ -14,6 +14,10 @@ public abstract class PageableMenu {
 		this.currentPage = new AtomicInteger(startPage);
 	}
 
+	public int getCurrentPage() {
+		return this.currentPage.intValue();
+	}
+
 	public abstract void render(int page);
 
 	public int previousPage() {
