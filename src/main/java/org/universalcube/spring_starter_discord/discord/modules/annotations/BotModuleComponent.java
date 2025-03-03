@@ -1,6 +1,5 @@
 package org.universalcube.spring_starter_discord.discord.modules.annotations;
 
-import net.dv8tion.jda.api.events.Event;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
@@ -15,5 +14,11 @@ import java.lang.annotation.Target;
 public @interface BotModuleComponent {
 	@NonNull String name();
 
-	@NonNull Class<? extends Event> eventClass();
+	@NonNull String description();
+
+	boolean enabled() default false;
+
+	boolean devOnly() default false;
+
+	boolean botOwnerOnly() default false;
 }
