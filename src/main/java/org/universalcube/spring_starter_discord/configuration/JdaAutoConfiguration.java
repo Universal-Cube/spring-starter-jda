@@ -40,6 +40,13 @@ public class JdaAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	@ConditionalOnProperty("spring.jda.token")
+	public JdaConfigurationProperties jdaConfigurationProperties() {
+		return this.properties;
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
+	@ConditionalOnProperty("spring.jda.token")
 	public Object jdaManager() throws InterruptedException {
 		if (Objects.nonNull(properties.getSharding()) && properties.getSharding().isEnabled()) {
 			log.info("Starting bot in SHARDED instance mode.");
