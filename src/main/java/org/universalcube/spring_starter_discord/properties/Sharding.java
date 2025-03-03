@@ -5,6 +5,5 @@ import lombok.Data;
 @Data
 public final class Sharding {
 	private boolean enabled = false;
-	private int minShards = 1;
-	private int maxShards = 8;
+	private int shardCount = 8;
 }
