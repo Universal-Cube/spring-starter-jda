@@ -3,13 +3,14 @@ package org.universalcube.spring_starter_discord.discord.modules;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.util.Objects;
 
 @Getter
 @Setter
 @Slf4j
-public abstract class BotModule {
+public abstract class BotModule extends ListenerAdapter {
 	private String name;
 	private String description;
 	private boolean enabled;
