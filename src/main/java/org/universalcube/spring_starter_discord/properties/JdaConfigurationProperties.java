@@ -16,4 +16,6 @@ public class JdaConfigurationProperties {
 	private Activity activity;
 	@NestedConfigurationProperty
 	private Owners owners;
+	@NestedConfigurationProperty
+	private Sharding sharding;
 }
