@@ -6,7 +6,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public record ImmutableTuple<T>(T[] elements) implements Tuple<T> {
+public record ImmutableTuple<T>(T... elements) implements Tuple<T> {
+
+	@SafeVarargs
+	public ImmutableTuple {
+	}
+
 	@Override
 	public T get(int index) {
 		if (index < 0 || index >= size())
