@@ -6,7 +6,7 @@
 	<groupId>org.universalcube</groupId>
 	<artifactId>spring-starter-jda</artifactId>
 	<name>Spring Boot Starter for JDA</name>
-	<version>0.9.0</version>
+	<version>0.9.5</version>
 	<description>JDA Starter for Spring Boot</description>
 	<url>https://github.com/Universal-Cube/spring-starter-jda</url>
 
@@ -164,14 +164,14 @@
 			</plugin>
 
 			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>${nexus-staging.version}</version>
+				<groupId>org.sonatype.central</groupId>
+				<artifactId>central-publishing-maven-plugin</artifactId>
+				<version>0.7.0</version>
 				<extensions>true</extensions>
 				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+					<publishingServerId>central</publishingServerId>
+					<autoPublish>true</autoPublish>
+					<waitUntil>published</waitUntil>
 				</configuration>
 			</plugin>
 
