@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.requests.restaction.WebhookMessageEditAction;
 import net.dv8tion.jda.api.requests.restaction.interactions.ReplyCallbackAction;
 import org.springframework.stereotype.Component;
 import org.universalcube.spring_starter_discord.discord.listener.ButtonRegistry;
-import org.universalcube.spring_starter_discord.utils.BotConstants;
+import org.universalcube.spring_starter_discord.discord.utils.BotConstants;
 
 import java.security.SecureRandom;
 import java.util.Objects;

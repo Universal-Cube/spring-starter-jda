@@ -1,4 +1,4 @@
-package org.universalcube.spring_starter_discord.utils;
+package org.universalcube.spring_starter_discord.discord.utils;
 
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 
