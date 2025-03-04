@@ -32,6 +32,13 @@ public class ModulesManagerBackend {
 				.collect(ConcurrentHashMap::new, (map, entry) -> map.put(entry.getKey(), entry.getValue()), Map::putAll);
 	}
 
+	public Map<String, BotModule> getSortedModules() {
+		return modules.entrySet()
+				.stream()
+				.sorted(Map.Entry.comparingByKey())
+				.collect(ConcurrentHashMap::new, (map, entry) -> map.put(entry.getKey(), entry.getValue()), Map::putAll);
+	}
+
 	public BotModule getModule(String name) {
 		return modules.get(name);
 	}
