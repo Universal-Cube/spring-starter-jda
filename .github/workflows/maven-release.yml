@@ -8,6 +8,11 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      SONATYPE_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+      SONATYPE_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+      GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -34,4 +39,4 @@ jobs:
           gpg --list-secret-keys --keyid-format LONG
 
       - name: Build and Deploy
-        run: mvn clean deploy --settings .mvn/settings.xml -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -Dgpg.useLegacyGpg=true --batch-mode
+        run: mvn clean deploy --settings .mvn/settings.xml -Dgpg.useLegacyGpg=true --batch-mode
