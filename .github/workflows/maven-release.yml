@@ -9,8 +9,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      SONATYPE_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-      SONATYPE_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+      SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+      SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
       GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
     steps:
@@ -30,8 +30,8 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           server-id: 'ossrh'
-          server-username: ${{ secrets.OSSRH_USERNAME }}
-          server-password: ${{ secrets.OSSRH_PASSWORD }}
+          server-username: ${{ secrets.SONATYPE_USERNAME }}
+          server-password: ${{ secrets.SONATYPE_PASSWORD }}
 
       - name: Import GPG Key
         run: |
