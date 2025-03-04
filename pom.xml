@@ -6,7 +6,7 @@
 	<groupId>org.universalcube</groupId>
 	<artifactId>spring-starter-jda</artifactId>
 	<name>Spring Boot Starter for JDA</name>
-	<version>0.8.0</version>
+	<version>0.8.5</version>
 	<description>JDA Starter for Spring Boot</description>
 	<url>https://github.com/Universal-Cube/spring-starter-jda</url>
 
@@ -48,6 +48,8 @@
 		<java.version>21</java.version>
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.target.source>21</maven.target.source>
+		<!--suppress UnresolvedMavenProperty -->
+		<gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
 		<maven-compiler.plugin>3.14.0</maven-compiler.plugin>
 		<maven-source.version>3.3.1</maven-source.version>
 		<maven-gpg.version>3.2.7</maven-gpg.version>

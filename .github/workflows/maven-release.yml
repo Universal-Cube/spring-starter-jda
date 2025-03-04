@@ -30,9 +30,10 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
+      - name: Import GPG Key
+        run: |
+          echo -n "${{ secrets.GPG_PRIVATE_KEY }}" | base64 --decode | gpg --import --batch
+          gpg --list-secret-keys --keyid-format LONG
+
       - name: Build and Deploy
-        run: mvn clean deploy -P release
-        env:
-          OSSRH_USERNAME: ${{OSSRH_USERNAME }}
-          OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: mvn clean deploy --settings .mvn/settings.xml -P release -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} --batch-mode
