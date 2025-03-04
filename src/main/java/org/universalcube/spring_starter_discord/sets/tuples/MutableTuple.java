@@ -2,7 +2,9 @@ package org.universalcube.spring_starter_discord.sets.tuples;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -55,12 +57,21 @@ public class MutableTuple<T> implements Tuple<T> {
 		return -1;
 	}
 
+	@Nullable
 	@Override
 	public synchronized T[] toArray() {
-		T[] array = (T[]) new Object[size()];
-		for (int i = 0; i < size(); i++) {
+		if (elements.length() == 0)
+			return null;
+
+		T firstElement = elements.get(0);
+		if (firstElement == null)
+			return null;
+
+		@SuppressWarnings("unchecked")
+		T[] array = (T[]) Array.newInstance(firstElement.getClass(), size());
+		for (int i = 0; i < size(); i++)
 			array[i] = elements.get(i);
-		}
+
 		return array;
 	}
 
