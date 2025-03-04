@@ -1,4 +1,4 @@
-package org.universalcube.spring_starter_discord.sets.pairs;
+package org.universalcube.spring_starter_discord.collections.pairs;
 
 import java.util.Objects;
 

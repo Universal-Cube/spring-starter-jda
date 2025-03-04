@@ -1,4 +1,4 @@
-package org.universalcube.spring_starter_discord.sets.tuples;
+package org.universalcube.spring_starter_discord.collections.tuples;
 
 import lombok.Getter;
 import lombok.Setter;
