@@ -109,6 +109,58 @@ public class MutableTuple<T> implements Tuple<T> {
 		return map;
 	}
 
+	public synchronized void reset() {
+		elements = new AtomicReferenceArray<>(0);
+	}
+
+	public synchronized void reset(T[] elements) {
+		this.elements = new AtomicReferenceArray<>(elements);
+	}
+
+	public synchronized void set(int index, T element) {
+		if (index < 0 || index >= size())
+			throw new IndexOutOfBoundsException("Index out of bounds: " + index);
+		elements.set(index, element);
+	}
+
+	public synchronized void add(T element) {
+		AtomicReferenceArray<T> newArray = new AtomicReferenceArray<>(size() + 1);
+		for (int i = 0; i < size(); i++) {
+			newArray.set(i, elements.get(i));
+		}
+
+		newArray.set(size(), element);
+		elements = newArray;
+	}
+
+	public synchronized void remove(int index) {
+		if (index < 0 || index >= size())
+			throw new IndexOutOfBoundsException("Index out of bounds: " + index);
+
+		AtomicReferenceArray<T> newArray = new AtomicReferenceArray<>(size() - 1);
+		for (int i = 0, j = 0; i < size(); i++) {
+			if (i != index)
+				newArray.set(j++, elements.get(i));
+		}
+		this.elements = newArray;
+	}
+
+	public synchronized void clear() {
+		this.reset();
+	}
+
+	public synchronized void reverse() {
+		int start = 0;
+		int end = size() - 1;
+		while (start < end) {
+			T temp = elements.get(start);
+			elements.set(start, elements.get(end));
+			elements.set(end, temp);
+			start++;
+			end--;
+		}
+	}
+
 	@Override
 	public synchronized boolean equals(Object obj) {
 		if (obj == null) return false;
