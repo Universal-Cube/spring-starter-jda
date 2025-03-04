@@ -34,4 +34,4 @@ jobs:
           gpg --list-secret-keys --keyid-format LONG
 
       - name: Build and Deploy
-        run: mvn clean deploy --settings .mvn/settings.xml -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} -Dgpg.useLegacyGpg=true --batch-mode
+        run: mvn clean deploy --settings .mvn/settings.xml -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -Dgpg.useLegacyGpg=true --batch-mode
