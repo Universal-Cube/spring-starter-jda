@@ -3,7 +3,7 @@ name: Publish to release repo
 on:
   push:
     tags:
-      - '*'
+      - '**'
 
 jobs:
   publish:
