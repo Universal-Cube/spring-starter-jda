@@ -73,4 +73,34 @@ public final class Sharding {
 	public void setShardCount(int shardCount) {
 		this.shardCount = shardCount;
 	}
+
+	/**
+	 * Compares the specified object with this Sharding instance for equality.
+	 * Determines whether the given object is an instance of Sharding and has
+	 * the same "enabled" status and "shardCount" value as the current instance.
+	 *
+	 * @param obj the object to be compared for equality with this instance.
+	 * @return {@code true} if the specified object is an instance of Sharding with the
+	 * same "enabled" status and "shardCount"; {@code false} otherwise.
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Sharding sharding) {
+			return this.enabled == sharding.enabled &&
+					this.shardCount == sharding.shardCount;
+		}
+		return super.equals(obj);
+	}
+
+	/**
+	 * Returns a string representation of the current state of the Sharding configuration.
+	 * The string includes whether sharding is enabled and the number of shards configured.
+	 *
+	 * @return a string representation of the sharding configuration, including the enabled state
+	 * and the shard count.
+	 */
+	@Override
+	public String toString() {
+		return "ShardingConfiguration(enabled=%s, shardCount=%d)".formatted(enabled, shardCount);
+	}
 }
