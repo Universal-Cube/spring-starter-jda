@@ -13,7 +13,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * individual elements, checking size, searching for elements, and
  * converting the tuple to other data structures.
  *
- * @param <T> the type of elements stored in this tuple
  */
 public record ImmutableTuple<T>(T[] elements) implements Tuple<T> {
 
