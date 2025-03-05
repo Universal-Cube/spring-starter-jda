@@ -29,47 +29,6 @@ public final class Settings {
 	private int chunkSize = 1024;
 
 	/**
-	 * Constructs a new Settings instance with default configuration.
-	 * By default, all fields within this Settings instance are set to their
-	 * respective default values.
-	 * <p>
-	 * This constructor initializes a Settings instance without any initial
-	 * customization. To customize the configuration fields such as gateway
-	 * intents, cache flags, online status, chunking, or chunk size, use the
-	 * parameterized constructor or setter methods provided (if applicable).
-	 */
-	public Settings() {
-	}
-
-	/**
-	 * Constructs a new Settings instance with the specified configuration parameters.
-	 * This constructor allows customization of gateway intents, cache flags, online status,
-	 * chunking, and chunk size for the Settings instance.
-	 *
-	 * @param gatewayIntents  a set of gateway intents that define specific actions or events
-	 *                        the bot can subscribe to. Passing an empty or null set will
-	 *                        result in no intents being configured.
-	 * @param cacheFlags      a set of cache flags that specify which aspects of the bot's cache
-	 *                        functionalities are enabled. A null or empty set disables caching
-	 *                        for all components.
-	 * @param onlineStatus    the online status to be used for the bot such as online, offline,
-	 *                        or idle. This determines how the bot appears to other users.
-	 * @param enabledChunking a boolean value indicating whether chunking (loading user
-	 *                        data in parts) is enabled or not. If true, chunking operates
-	 *                        based on the specified chunk size.
-	 * @param chunkSize       an integer defining the size of each chunk when chunking is enabled.
-	 *                        This controls the number of items loaded per chunk. Ignored if
-	 *                        chunking is disabled.
-	 */
-	public Settings(Set<GatewayIntent> gatewayIntents, Set<CacheFlag> cacheFlags, OnlineStatus onlineStatus, boolean enabledChunking, int chunkSize) {
-		this.gatewayIntents = gatewayIntents;
-		this.cacheFlags = cacheFlags;
-		this.onlineStatus = onlineStatus;
-		this.enabledChunking = enabledChunking;
-		this.chunkSize = chunkSize;
-	}
-
-	/**
 	 * Retrieves the set of gateway intents associated with the current configuration.
 	 * Gateway intents define specific actions or events that the bot can subscribe to.
 	 *

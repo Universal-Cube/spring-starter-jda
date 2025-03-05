@@ -21,37 +21,21 @@ public final class Activity {
 	private ActivityType type;
 
 	/**
-	 * Default constructor for the Activity class.
-	 * Initializes an empty instance of Activity with no pre-set configuration.
-	 */
-	public Activity() {
-	}
-
-	/**
-	 * Constructs an instance of the Activity class with the specified parameters.
-	 *
-	 * @param enabled a boolean indicating whether the activity is enabled.
-	 * @param name    the name of the activity to be associated with the configuration.
-	 *                It must not be null or empty when the activity is enabled.
-	 * @param url     the URL associated with the activity. It must be valid and not null or empty
-	 *                if the activity type requires a URL.
-	 * @param type    the type of the activity. This must not be null and should correspond
-	 *                to a valid ActivityType enumeration.
-	 */
-	public Activity(boolean enabled, String name, String url, ActivityType type) {
-		this.enabled = enabled;
-		this.name = name;
-		this.url = url;
-		this.type = type;
-	}
-
-	/**
 	 * Determines whether the activity is enabled for the Discord bot.
 	 *
 	 * @return true if the activity is enabled; false otherwise.
 	 */
 	public boolean isEnabled() {
 		return enabled;
+	}
+
+	/**
+	 * Sets the enabled state of the activity.
+	 *
+	 * @param enabled true to enable the activity; false to disable it.
+	 */
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	/**

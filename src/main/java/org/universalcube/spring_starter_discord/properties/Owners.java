@@ -18,26 +18,6 @@ public final class Owners {
 	private Set<String> ids = new HashSet<>();
 
 	/**
-	 * Constructs a new instance of the Owners class with default values.
-	 * By default, the root ID is set to null, and the set of owner IDs is initialized as an empty set.
-	 */
-	public Owners() {
-	}
-
-	/**
-	 * Constructs a new Owners instance with the specified root ID and set of owner IDs.
-	 *
-	 * @param rootId the root ID representing the primary owner with the highest level of permissions.
-	 *               This may be null or empty if no primary root owner is configured.
-	 * @param ids    the set of owner IDs representing additional users with elevated permissions.
-	 *               A null or empty set indicates that no additional owners are configured.
-	 */
-	public Owners(String rootId, Set<String> ids) {
-		this.rootId = rootId;
-		this.ids = ids;
-	}
-
-	/**
 	 * Retrieves the root ID of the primary owner.
 	 *
 	 * @return the root ID as a string, or {@code null} if not set.

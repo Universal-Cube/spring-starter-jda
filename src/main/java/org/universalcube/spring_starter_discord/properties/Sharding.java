@@ -13,26 +13,6 @@ public final class Sharding {
 	private int shardCount = 8;
 
 	/**
-	 * Constructs a new instance of the Sharding class with default configuration.
-	 * By default, sharding is disabled, and the number of shards is set to the default value.
-	 */
-	public Sharding() {
-	}
-
-	/**
-	 * Constructs a new instance of the Sharding class with the specified sharding configuration.
-	 *
-	 * @param enabled    a boolean indicating whether sharding is enabled.
-	 *                   {@code true} to enable sharding, {@code false} to disable it.
-	 * @param shardCount an integer specifying the number of shards to be used.
-	 *                   Must be greater than or equal to 1 when sharding is enabled.
-	 */
-	public Sharding(boolean enabled, int shardCount) {
-		this.enabled = enabled;
-		this.shardCount = shardCount;
-	}
-
-	/**
 	 * Determines whether sharding is enabled for the bot configuration.
 	 *
 	 * @return {@code true} if sharding is enabled; {@code false} otherwise.
