@@ -20,7 +20,6 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
  * This class integrates with Spring Boot's configuration properties mechanism and uses nested configuration
  * properties features for complex configuration hierarchies.
  */
-
 @ConfigurationProperties("spring.jda")
 public class JdaConfigurationProperties {
 	private String token;
@@ -138,5 +137,39 @@ public class JdaConfigurationProperties {
 	 */
 	public void setSharding(Sharding sharding) {
 		this.sharding = sharding;
+	}
+
+	/**
+	 * Determines whether the specified object is equal to the current instance
+	 * of {@code JdaConfigurationProperties}.
+	 * Two instances are considered equal if they are of the same type and their
+	 * respective fields (token, settings, activity, owners, and sharding) are equal.
+	 *
+	 * @param obj the object to compare for equality with this {@code JdaConfigurationProperties} instance.
+	 * @return {@code true} if the specified object is equal to this instance; {@code false} otherwise.
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof JdaConfigurationProperties jdaConfig) {
+			return this.token.equals(jdaConfig.token)
+					&& this.settings.equals(jdaConfig.settings)
+					&& this.activity.equals(jdaConfig.activity)
+					&& this.owners.equals(jdaConfig.owners)
+					&& this.sharding.equals(jdaConfig.sharding);
+		}
+
+		return super.equals(obj);
+	}
+
+	/**
+	 * Returns a string representation of the JdaConfigurationProperties instance.
+	 * The string includes the values of the token, settings, activity, owners, and sharding fields.
+	 *
+	 * @return a string representation of the JdaConfigurationProperties object.
+	 */
+	@Override
+	public String toString() {
+		return "JdaConfigurationProperties(token='%s', settings=%s, activity=%s, owners=%s, sharding=%s)"
+				.formatted(token, settings, activity, owners, sharding);
 	}
 }
