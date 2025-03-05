@@ -1,16 +1,12 @@
 package org.universalcube.spring_starter_discord.discord.modules;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
-
-@Getter
-@Setter
-@Slf4j
 public abstract class BotModule extends ListenerAdapter {
+	private final static Logger log = LoggerFactory.getLogger(BotModule.class);
 	private String name;
 	private String description;
 	private boolean enabled;
@@ -38,6 +34,46 @@ public abstract class BotModule extends ListenerAdapter {
 		this.description = description;
 		this.enabled = enabled;
 		this.devOnly = devOnly;
+		this.botOwnerOnly = botOwnerOnly;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public boolean isDevOnly() {
+		return devOnly;
+	}
+
+	public void setDevOnly(boolean devOnly) {
+		this.devOnly = devOnly;
+	}
+
+	public boolean isBotOwnerOnly() {
+		return botOwnerOnly;
+	}
+
+	public void setBotOwnerOnly(boolean botOwnerOnly) {
 		this.botOwnerOnly = botOwnerOnly;
 	}
 

@@ -1,9 +1,10 @@
 package org.universalcube.spring_starter_discord.discord.commands;
 
 import jakarta.annotation.PostConstruct;
-import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.EventListener;
@@ -15,8 +16,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.*;
 
-@Slf4j
 public class SlashCommandBackend implements DisposableBean {
+	private final static Logger log = LoggerFactory.getLogger(SlashCommandBackend.class);
 	private final JDA jda;
 	private final ApplicationContext applicationContext;
 	private final ExecutorService executorService;

@@ -1,8 +1,9 @@
 package org.universalcube.spring_starter_discord.discord.modules;
 
 import jakarta.annotation.PostConstruct;
-import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.JDA;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.universalcube.spring_starter_discord.discord.modules.annotations.BotModuleComponent;
 
@@ -10,8 +11,8 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Slf4j
 public class ModulesManagerBackend {
+	private final static Logger log = LoggerFactory.getLogger(ModulesManagerBackend.class);
 	private final JDA jda;
 	private final ApplicationContext applicationContext;
 	private final Map<String, BotModule> modules = new ConcurrentHashMap<>();
