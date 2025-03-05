@@ -100,16 +100,14 @@ public class JdaAutoConfiguration {
 	@Bean
 	@ConditionalOnMissingBean
 	@ConditionalOnProperty("spring.jda.token")
-	public Object jdaManager() throws InterruptedException {
-		if (Objects.nonNull(properties.getSharding()) && properties.getSharding().isEnabled()) {
-			log.info("Starting bot in SHARDED instance mode.");
-			log.info("JDA manager is sharded.");
-			return createShardedInstance();
-		} else {
-			log.info("Starting bot in SINGLE instance mode.");
-			log.info("JDA manager is not sharded.");
-			return createSingleInstance();
-		}
+	public JDA jdaManager() throws InterruptedException {
+		JDABuilder builder = JDABuilder.createDefault(properties.getToken());
+
+		configureBuilder(builder);
+
+		JDA jda = builder.build().awaitReady();
+		jdaInstances.add(jda);
+		return jda;
 	}
 
 	/**
@@ -132,24 +130,6 @@ public class JdaAutoConfiguration {
 		ShardManager shardManager = builder.build();
 		shardManagers.add(shardManager);
 		return shardManager;
-	}
-
-	/**
-	 * Creates and initializes a single instance of {@link JDA} for interacting with the Discord API.
-	 * This method configures a {@link JDABuilder} with settings retrieved from the {@link JdaConfigurationProperties},
-	 * builds the JDA instance, awaits its readiness, and adds it to the list of managed JDA instances.
-	 *
-	 * @return a newly created instance of {@link JDA} that is ready to use for interacting with Discord's API.
-	 * @throws InterruptedException if the thread is interrupted while awaiting readiness of the JDA instance.
-	 */
-	private JDA createSingleInstance() throws InterruptedException {
-		JDABuilder builder = JDABuilder.createDefault(properties.getToken());
-
-		configureBuilder(builder);
-
-		JDA jda = builder.build().awaitReady();
-		jdaInstances.add(jda);
-		return jda;
 	}
 
 	/**

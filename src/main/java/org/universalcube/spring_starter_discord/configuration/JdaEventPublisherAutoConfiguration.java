@@ -41,7 +41,7 @@ public class JdaEventPublisherAutoConfiguration {
 	 *                   (e.g., instances of {@code GenericEvent}) as {@link PayloadApplicationEvent}
 	 *                   to the Spring application context.
 	 */
-	public JdaEventPublisherAutoConfiguration(Object jdaManager, ApplicationEventPublisher publisher) {
+	public JdaEventPublisherAutoConfiguration(JDA jdaManager, ApplicationEventPublisher publisher) {
 		if (jdaManager instanceof JDA jda) {
 			jda.addEventListener(new ListenerAdapter() {
 				@Override

@@ -31,9 +31,9 @@ public class JdaModulesAutoConfiguration {
 	 * @param applicationContext the Spring ApplicationContext used to manage the application environment and components.
 	 * @param jdaManager         the JDA manager object, expected to be an instance of JDA, that manages the Discord API interaction.
 	 */
-	public JdaModulesAutoConfiguration(ApplicationContext applicationContext, Object jdaManager) {
+	public JdaModulesAutoConfiguration(ApplicationContext applicationContext, JDA jdaManager) {
 		this.applicationContext = applicationContext;
-		this.jda = (JDA) jdaManager;
+		this.jda = jdaManager;
 	}
 
 	/**

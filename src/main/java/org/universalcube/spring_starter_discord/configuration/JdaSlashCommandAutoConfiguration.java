@@ -37,9 +37,9 @@ public class JdaSlashCommandAutoConfiguration {
 	 * @param applicationContext the Spring application context used to manage application beans and dependencies
 	 * @param jdaManager         an object representing the JDA (Java Discord API) instance; it is cast to a JDA type within the constructor
 	 */
-	public JdaSlashCommandAutoConfiguration(ApplicationContext applicationContext, Object jdaManager) {
+	public JdaSlashCommandAutoConfiguration(ApplicationContext applicationContext, JDA jdaManager) {
 		this.applicationContext = applicationContext;
-		this.jda = (JDA) jdaManager;
+		this.jda = jdaManager;
 	}
 
 	/**
