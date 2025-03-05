@@ -41,7 +41,7 @@ public class MutableTuple<T> implements Tuple<T> {
 	 *
 	 * @param index the index of the element to retrieve; must be non-negative and less than the size of the tuple
 	 * @return the element at the specified index
-	 * @throws IndexOutOfBoundsException if the index is out of bounds (index < 0 || index >= size())
+	 * @throws IndexOutOfBoundsException if the index is out of bounds {@code (index < 0 || index >= size())}
 	 */
 	@Override
 	public synchronized T get(int index) {
@@ -244,7 +244,7 @@ public class MutableTuple<T> implements Tuple<T> {
 	 *               and less than the size of the tuple.
 	 * @param element the new element to store at the specified index; must be of type {@code T}.
 	 * @throws IndexOutOfBoundsException if the specified index is out of bounds
-	 *         (index < 0 || index >= size()).
+	 *         {@code (index < 0 || index >= size())}.
 	 */
 	public synchronized void set(int index, T element) {
 		if (index < 0 || index >= size())
@@ -278,7 +278,7 @@ public class MutableTuple<T> implements Tuple<T> {
 	 * @param index the index of the element to be removed; must be non-negative
 	 *              and less than the size of the tuple.
 	 * @throws IndexOutOfBoundsException if the index is out of bounds
-	 *         (index < 0 || index >= size()).
+	 *         {@code (index < 0 || index >= size())}.
 	 */
 	public synchronized void remove(int index) {
 		if (index < 0 || index >= size())

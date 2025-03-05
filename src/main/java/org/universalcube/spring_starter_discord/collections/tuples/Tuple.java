@@ -21,7 +21,6 @@ public interface Tuple<T> extends Serializable {
 	 *              less than the size of the tuple.
 	 * @return the element at the specified position.
 	 * @throws IndexOutOfBoundsException if the index is out of range
-	 *                                   (index < 0 || index >= size()).
 	 */
 	T get(int index);
 
