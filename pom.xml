@@ -125,7 +125,7 @@
 					<execution>
 						<id>attach-sources</id>
 						<goals>
-							<goal>jar-no-fork</goal>
+							<goal>jar</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -157,6 +157,13 @@
 				<artifactId>central-publishing-maven-plugin</artifactId>
 				<version>0.3.0</version>
 				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<publishingServerId>central</publishingServerId>
 					<tokenAuth>true</tokenAuth>
