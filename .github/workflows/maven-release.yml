@@ -49,4 +49,4 @@ jobs:
           gpg --list-secret-keys --keyid-format LONG
 
       - name: Build and Deploy
-        run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} deploy
+        run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} deploy
