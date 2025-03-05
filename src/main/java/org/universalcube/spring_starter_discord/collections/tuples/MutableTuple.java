@@ -1,7 +1,5 @@
 package org.universalcube.spring_starter_discord.collections.tuples;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.lang.Nullable;
 
 import java.lang.reflect.Array;
@@ -18,8 +16,6 @@ import java.util.concurrent.atomic.AtomicReferenceArray;
  *
  * @param <T> the type of elements in the tuple
  */
-@Getter
-@Setter
 public class MutableTuple<T> implements Tuple<T> {
 	private volatile AtomicReferenceArray<T> elements;
 
@@ -33,6 +29,24 @@ public class MutableTuple<T> implements Tuple<T> {
 	@SafeVarargs
 	public MutableTuple(T... elements) {
 		this.elements = new AtomicReferenceArray<>(elements);
+	}
+
+	/**
+	 * Retrieves the elements stored in the atomic reference array.
+	 *
+	 * @return an AtomicReferenceArray containing the stored elements.
+	 */
+	public AtomicReferenceArray<T> getElements() {
+		return elements;
+	}
+
+	/**
+	 * Sets the elements of the current object.
+	 *
+	 * @param elements an AtomicReferenceArray containing the elements to be set
+	 */
+	public void setElements(AtomicReferenceArray<T> elements) {
+		this.elements = elements;
 	}
 
 	/**

@@ -1,8 +1,5 @@
 package org.universalcube.spring_starter_discord.collections.pairs;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -32,8 +29,6 @@ import java.util.function.Function;
  *            - Ideal for scenarios where the key and value need to be updated after initialization.
  *            - Suitable for operations requiring temporary value changes in a pair structure.
  */
-@Getter
-@Setter
 public class MutablePair<K, V> implements Pair<K, V> {
 	private volatile K key;
 	private volatile V value;
@@ -79,6 +74,16 @@ public class MutablePair<K, V> implements Pair<K, V> {
 	}
 
 	/**
+	 * Retrieves the key of this {@code MutablePair}.
+	 * This method is synchronized to ensure thread safety when accessing the key.
+	 *
+	 * @return the key of the pair, which may be null depending on the state of the {@code MutablePair}.
+	 */
+	public K getKey() {
+		return key;
+	}
+
+	/**
 	 * Sets the key of this {@code MutablePair}.
 	 * This method is synchronized to ensure thread safety when modifying the key.
 	 *
@@ -96,6 +101,16 @@ public class MutablePair<K, V> implements Pair<K, V> {
 	 */
 	@Override
 	public synchronized V value() {
+		return value;
+	}
+
+	/**
+	 * Retrieves the value of this {@code MutablePair}.
+	 * This method is synchronized to ensure thread safety when accessing the value.
+	 *
+	 * @return the value of the pair, which may be null depending on the state of the {@code MutablePair}.
+	 */
+	public V getValue() {
 		return value;
 	}
 
