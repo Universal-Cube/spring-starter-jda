@@ -14,9 +14,9 @@ public class JdaSlashCommandAutoConfiguration {
 	private final ApplicationContext applicationContext;
 	private final JDA jda;
 
-	public JdaSlashCommandAutoConfiguration(ApplicationContext applicationContext, JDA jda) {
+	public JdaSlashCommandAutoConfiguration(ApplicationContext applicationContext, Object jdaManager) {
 		this.applicationContext = applicationContext;
-		this.jda = jda;
+		this.jda = (JDA) jdaManager;
 	}
 
 	@Bean

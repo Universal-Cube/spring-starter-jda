@@ -14,9 +14,9 @@ public class JdaModulesAutoConfiguration {
 	private final ApplicationContext applicationContext;
 	private final JDA jda;
 
-	public JdaModulesAutoConfiguration(ApplicationContext applicationContext, JDA jda) {
+	public JdaModulesAutoConfiguration(ApplicationContext applicationContext, Object jdaManager) {
 		this.applicationContext = applicationContext;
-		this.jda = jda;
+		this.jda = (JDA) jdaManager;
 	}
 
 	@Bean
