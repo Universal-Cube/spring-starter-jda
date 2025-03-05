@@ -1,8 +1,6 @@
 package org.universalcube.spring_starter_discord.configuration;
 
 import jakarta.annotation.PreDestroy;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -11,6 +9,8 @@ import net.dv8tion.jda.api.sharding.ShardManager;
 import net.dv8tion.jda.api.utils.ChunkingFilter;
 import net.dv8tion.jda.api.utils.Compression;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -24,17 +24,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Getter
-@Slf4j
 @AutoConfiguration
 @EnableConfigurationProperties(JdaConfigurationProperties.class)
 public class JdaAutoConfiguration {
+	private final static Logger log = LoggerFactory.getLogger(JdaAutoConfiguration.class);
 	private final JdaConfigurationProperties properties;
 	private final List<ShardManager> shardManagers = new ArrayList<>();
 	private final List<JDA> jdaInstances = new ArrayList<>();
 
 	public JdaAutoConfiguration(JdaConfigurationProperties properties) {
 		this.properties = properties;
+	}
+
+	public List<JDA> getJdaInstances() {
+		return jdaInstances;
+	}
+
+	public List<ShardManager> getShardManagers() {
+		return shardManagers;
 	}
 
 	@Bean
