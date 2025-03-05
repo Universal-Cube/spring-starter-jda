@@ -13,9 +13,7 @@ import java.util.Set;
  * if specific functionalities are enabled at a higher privilege.
  * <p>
  * The set of owner IDs (`ids`) represents additional users with elevated permissions, apart from the root owner.
- * </p>
- * Functionalities include methods to validate whether the root owner or general owners are enabled by
- * evaluating the corresponding properties.
+ *
  */
 @Data
 public final class Owners {
@@ -26,6 +24,11 @@ public final class Owners {
 		return rootId != null && !rootId.isEmpty();
 	}
 
+	/**
+	 * Determines whether any owner IDs are defined in the configuration.
+	 *
+	 * @return {@code true} if the set of owner IDs is not empty; {@code false} otherwise.
+	 */
 	public boolean isEnabled() {
 		return !ids.isEmpty();
 	}
