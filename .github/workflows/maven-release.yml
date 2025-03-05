@@ -1,9 +1,8 @@
 name: Publish to release repo
 
 on:
-  push:
-    tags:
-      - '**'
+  release:
+    types: [ created ]
 
 jobs:
   publish:
@@ -38,8 +37,8 @@ jobs:
             <servers>
               <server>
                 <id>central</id>
-                <username>${{ secrets.OSSRH_USERNAME }}</username>
-                <password>${{ secrets.OSSRH_TOKEN }}</password>
+                <username>${{ secrets.SONATYPE_USERNAME }}</username>
+                <password>${{ secrets.SONATYPE_PASSWORD }}</password>
               </server>
             </servers>
           </settings>" > $HOME/.m2/settings.xml
