@@ -10,7 +10,7 @@ jobs:
     env:
       SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
       SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-      GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
     steps:
       - name: Checkout code
@@ -49,4 +49,4 @@ jobs:
           gpg --list-secret-keys --keyid-format LONG
 
       - name: Build and Deploy
-        run: mvn clean deploy --batch-mode -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }}
+        run: mvn clean deploy --batch-mode
